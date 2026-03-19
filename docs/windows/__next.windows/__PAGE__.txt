@@ -1,0 +1,9 @@
+1:"$Sreact.fragment"
+2:I[22016,["/Automation_Practice_Site/_next/static/chunks/ff81c92edc8f96d5.js"],""]
+3:I[64113,["/Automation_Practice_Site/_next/static/chunks/ff81c92edc8f96d5.js"],"default"]
+4:I[26530,["/Automation_Practice_Site/_next/static/chunks/ff81c92edc8f96d5.js"],"default"]
+5:I[58040,["/Automation_Practice_Site/_next/static/chunks/ff81c92edc8f96d5.js"],"default"]
+6:I[97367,["/Automation_Practice_Site/_next/static/chunks/ff1a16fafef87110.js","/Automation_Practice_Site/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+0:{"buildId":"WHSkqY4ljQUMGpF2IFwjc","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"flex min-h-screen flex-col items-center bg-gray-100 p-6","children":[["$","h1",null,{"className":"mb-2 text-3xl font-bold","children":"Windows Practice Page"}],["$","p",null,{"className":"mb-4 text-gray-600","children":"Practice handling tabs and windows for Selenium automation"}],["$","$L2",null,{"href":"/","className":"inline-flex items-center rounded-lg bg-gray-800 px-5 py-2 text-white transition hover:bg-black","children":"<- Back to Dashboard"}],["$","div",null,{"className":"mt-6 w-full max-w-2xl space-y-6","children":[["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}]]}]]}],[["$","script","script-0",{"src":"/Automation_Practice_Site/_next/static/chunks/ff81c92edc8f96d5.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

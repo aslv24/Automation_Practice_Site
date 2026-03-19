@@ -1,0 +1,9 @@
+1:"$Sreact.fragment"
+2:I[22016,["/Automation_Practice_Site/_next/static/chunks/4c50d561e8cab65a.js"],""]
+3:I[71659,["/Automation_Practice_Site/_next/static/chunks/4c50d561e8cab65a.js"],"default"]
+4:I[30469,["/Automation_Practice_Site/_next/static/chunks/4c50d561e8cab65a.js"],"default"]
+5:I[63339,["/Automation_Practice_Site/_next/static/chunks/4c50d561e8cab65a.js"],"default"]
+6:I[97367,["/Automation_Practice_Site/_next/static/chunks/ff1a16fafef87110.js","/Automation_Practice_Site/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+0:{"buildId":"WHSkqY4ljQUMGpF2IFwjc","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-gray-50 px-6 py-10","children":[["$","div",null,{"className":"mb-10 text-center","children":[["$","h1",null,{"className":"text-3xl font-semibold text-gray-800","children":"Alerts Practice Page"}],["$","p",null,{"className":"mb-4 mt-2 text-gray-500","children":"Practice handling different types of alerts for Selenium automation"}],["$","$L2",null,{"href":"/","className":"inline-flex items-center rounded-lg bg-gray-800 px-5 py-2 text-white transition hover:bg-black","children":"<- Back to Dashboard"}]]}],["$","div",null,{"className":"mx-auto max-w-3xl space-y-6","children":[["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}]]}]]}],[["$","script","script-0",{"src":"/Automation_Practice_Site/_next/static/chunks/4c50d561e8cab65a.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

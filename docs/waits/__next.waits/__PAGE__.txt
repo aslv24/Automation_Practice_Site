@@ -1,0 +1,8 @@
+1:"$Sreact.fragment"
+2:I[22016,["/Automation_Practice_Site/_next/static/chunks/5ae310ce09f4bcef.js"],""]
+3:I[7905,["/Automation_Practice_Site/_next/static/chunks/5ae310ce09f4bcef.js"],"default"]
+4:I[6864,["/Automation_Practice_Site/_next/static/chunks/5ae310ce09f4bcef.js"],"default"]
+5:I[97367,["/Automation_Practice_Site/_next/static/chunks/ff1a16fafef87110.js","/Automation_Practice_Site/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+0:{"buildId":"WHSkqY4ljQUMGpF2IFwjc","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"flex min-h-screen flex-col items-center bg-gray-100 p-6","children":[["$","h1",null,{"className":"mb-2 text-3xl font-bold","children":"Waits Practice Page"}],["$","p",null,{"className":"mb-4 text-gray-600","children":"Practice implicit and explicit waits in Selenium"}],["$","$L2",null,{"href":"/","className":"inline-flex items-center rounded-lg bg-gray-800 px-5 py-2 text-white transition hover:bg-black","children":"<- Back to Dashboard"}],["$","div",null,{"className":"mt-6 w-full max-w-2xl space-y-6","children":[["$","$L3",null,{}],["$","$L4",null,{}]]}]]}],[["$","script","script-0",{"src":"/Automation_Practice_Site/_next/static/chunks/5ae310ce09f4bcef.js","async":true}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],"loading":null,"isPartial":false}
+7:null
