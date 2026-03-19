@@ -15,41 +15,50 @@ import { FaUser, FaEnvelope, FaPhone } from "react-icons/fa"
 
 export default function LeadPopup() {
 
+  const [open, setOpen] = useState(false)
+
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [mobile, setMobile] = useState("")
 
-  const [open, setOpen] = useState(false)
-
   const [emailError, setEmailError] = useState("")
   const [mobileError, setMobileError] = useState("")
 
-  // ✅ Fix hydration issue (open after mount)
+  // ✅ Show popup only first time
   useEffect(() => {
-    setOpen(true)
+    const alreadyShown = localStorage.getItem("leadPopupShown")
+
+    if (!alreadyShown) {
+      setTimeout(() => {
+        setOpen(true)
+      }, 1000) // slight delay (better UX)
+
+      localStorage.setItem("leadPopupShown", "true")
+    }
   }, [])
 
+  // ✅ Email validation
   const validateEmail = (value: string) => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailPattern.test(value)
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
   }
 
   const handleEmailChange = (value: string) => {
     setEmail(value)
 
     if (value && !validateEmail(value)) {
-      setEmailError("Please enter a valid email address")
+      setEmailError("Please enter a valid email")
     } else {
       setEmailError("")
     }
   }
 
+  // ✅ Mobile validation
   const handleMobileChange = (value: string) => {
     const onlyNumbers = value.replace(/[^0-9]/g, "")
     setMobile(onlyNumbers)
 
-    if (onlyNumbers.length > 0 && onlyNumbers.length !== 10) {
-      setMobileError("Mobile number must contain 10 digits")
+    if (onlyNumbers && onlyNumbers.length !== 10) {
+      setMobileError("Mobile must be 10 digits")
     } else {
       setMobileError("")
     }
@@ -60,17 +69,19 @@ export default function LeadPopup() {
     validateEmail(email) &&
     mobile.length === 10
 
+  // ✅ Submit
   const handleSubmit = () => {
     console.log({ name, email, mobile })
 
-    // TODO: API call here
+    // store user registered flag (optional)
+    localStorage.setItem("userRegistered", "true")
 
     setOpen(false)
   }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="sm:max-w-lg rounded-2xl p-8 bg-white shadow-xl [&>button]:text-gray-400 [&>button:hover]:text-red-500">
+      <DialogContent className="sm:max-w-lg rounded-2xl p-8 bg-white shadow-xl">
 
         <DialogHeader>
           <DialogTitle className="text-center text-3xl font-semibold text-gray-800">
@@ -86,35 +97,28 @@ export default function LeadPopup() {
 
           {/* Name */}
           <div className="flex items-center border border-gray-300 rounded-lg px-4 py-3 focus-within:border-blue-500">
-            <FaUser className="text-gray-400 mr-3 text-lg"/>
-
+            <FaUser className="text-gray-400 mr-3"/>
             <Input
               id="name"
               placeholder="Enter your name"
-              className="border-0 focus-visible:ring-0 text-base"
+              className="border-0 focus-visible:ring-0"
               value={name}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setName(e.target.value)
-              }
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
           {/* Email */}
           <div>
             <div className="flex items-center border border-gray-300 rounded-lg px-4 py-3 focus-within:border-blue-500">
-              <FaEnvelope className="text-gray-400 mr-3 text-lg"/>
-
+              <FaEnvelope className="text-gray-400 mr-3"/>
               <Input
                 id="email"
                 placeholder="Enter your email"
-                className="border-0 focus-visible:ring-0 text-base"
+                className="border-0 focus-visible:ring-0"
                 value={email}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  handleEmailChange(e.target.value)
-                }
+                onChange={(e) => handleEmailChange(e.target.value)}
               />
             </div>
-
             {emailError && (
               <p className="text-red-500 text-sm mt-1">{emailError}</p>
             )}
@@ -123,20 +127,16 @@ export default function LeadPopup() {
           {/* Mobile */}
           <div>
             <div className="flex items-center border border-gray-300 rounded-lg px-4 py-3 focus-within:border-blue-500">
-              <FaPhone className="text-gray-400 mr-3 text-lg"/>
-
+              <FaPhone className="text-gray-400 mr-3"/>
               <Input
                 id="mobile"
                 placeholder="Enter your mobile number"
-                className="border-0 focus-visible:ring-0 text-base"
+                className="border-0 focus-visible:ring-0"
                 value={mobile}
                 maxLength={10}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  handleMobileChange(e.target.value)
-                }
+                onChange={(e) => handleMobileChange(e.target.value)}
               />
             </div>
-
             {mobileError && (
               <p className="text-red-500 text-sm mt-1">{mobileError}</p>
             )}
@@ -146,13 +146,14 @@ export default function LeadPopup() {
           <Button
             id="submitBtn"
             disabled={!isFormValid}
-            className="w-full text-base py-5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50"
             onClick={handleSubmit}
+            className="w-full py-5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50"
           >
             Register Now
           </Button>
 
         </div>
+
       </DialogContent>
     </Dialog>
   )
