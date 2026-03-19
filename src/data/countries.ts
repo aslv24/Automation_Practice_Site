@@ -1,4 +1,9 @@
-export const countries = [
+export type Country = {
+  name: string
+  code: string
+}
+
+export const countries: Country[] = [
   { name: "Afghanistan", code: "+93" },
   { name: "Albania", code: "+355" },
   { name: "Algeria", code: "+213" },

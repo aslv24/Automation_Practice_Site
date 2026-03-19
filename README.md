@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Selenium Practice Site
+
+A Next.js practice app for learning and demonstrating common Selenium automation scenarios through interactive UI exercises.
+
+## Features
+
+- Dashboard for navigating practice modules
+- Alerts, calendar, checkbox, dropdown, forms, frames, mouse, radio button, suggestion list, waits, windows, and file upload scenarios
+- Predictable ids and interactions that are useful for browser automation practice
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` starts the development server
+- `npm run build` creates a production build
+- `npm run start` runs the production server
+- `npm run lint` checks the codebase with ESLint
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app` contains routes for each practice page
+- `src/components/modules` contains the interactive Selenium practice widgets
+- `src/components/layout` contains shared layout helpers
+- `src/data` contains reusable static data for the UI
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- This project is designed for UI automation practice, so components intentionally expose stable selectors and simple behaviors.
+- Browser-only features are isolated into client components where possible to keep the rest of the app simpler.

@@ -1,91 +1,85 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
 export default function ValidationForm() {
-  // State
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
 
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const handleSubmit = async () => {
+    setError("")
+    setSuccess("")
 
- const handleSubmit = async () => {
-  setError("");
-  setSuccess("");
+    if (!name || !email) {
+      setError("All fields are required")
+      return
+    }
 
-  if (!name || !email) {
-    setError("All fields are required");
-    return;
+    if (!email.includes("@")) {
+      setError("Invalid email format")
+      return
+    }
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+      setSuccess("Form submitted successfully.")
+      setName("")
+      setEmail("")
+    } catch {
+      setError("Something went wrong")
+    }
   }
-
-  if (!email.includes("@")) {
-    setError("Invalid email format");
-    return;
-  }
-
-  try {
-    // ✅ Fake API call (simulate server delay)
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setSuccess("Form submitted successfully ✅");
-
-    // Reset after success
-    setName("");
-    setEmail("");
-
-  } catch (err) {
-    setError("Something went wrong");
-  }
-};
 
   return (
-    <div className="p-5 max-w-md mx-auto border rounded-lg shadow">
-      <h2 className="text-xl font-bold mb-4">Validation Form</h2>
+    <div className="mx-auto max-w-md rounded-lg border p-5 shadow">
+      <h2 className="mb-4 text-xl font-bold">Validation Form</h2>
 
-      {/* FORM */}
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
+          e.preventDefault()
+          void handleSubmit()
         }}
       >
-        {/* Name */}
         <div className="mb-3">
-          <label className="block mb-1">Name</label>
+          <label htmlFor="validation-name" className="mb-1 block">
+            Name
+          </label>
           <input
+            id="validation-name"
             type="text"
             placeholder="Enter name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="border w-full px-3 py-2 rounded"
+            className="w-full rounded border px-3 py-2"
           />
         </div>
 
-        {/* Email */}
         <div className="mb-3">
-          <label className="block mb-1">Email</label>
+          <label htmlFor="validation-email" className="mb-1 block">
+            Email
+          </label>
           <input
-            type="text"
+            id="validation-email"
+            type="email"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border w-full px-3 py-2 rounded"
+            className="w-full rounded border px-3 py-2"
           />
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+          className="rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
         >
           Submit
         </button>
       </form>
 
-      {/* Messages */}
-      {error && <p className="text-red-500 mt-3">{error}</p>}
-      {success && <p className="text-green-600 mt-3">{success}</p>}
+      {error && <p className="mt-3 text-red-500">{error}</p>}
+      {success && <p className="mt-3 text-green-600">{success}</p>}
     </div>
-  );
+  )
 }

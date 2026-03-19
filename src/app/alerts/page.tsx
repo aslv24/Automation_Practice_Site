@@ -1,39 +1,28 @@
-"use client"
-
-import Link from "next/link"
-import SimpleAlert from "@/components/modules/alerts/SimpleAlert"
+import DashboardBackLink from "@/components/layout/DashboardBackLink"
 import ConfirmAlert from "@/components/modules/alerts/ConfirmAlert"
 import PromptAlert from "@/components/modules/alerts/PromptAlert"
+import SimpleAlert from "@/components/modules/alerts/SimpleAlert"
 
 export default function AlertsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-6">
-
-      {/* Header Section */}
-      <div className="text-center mb-10">
+    <div className="min-h-screen bg-gray-50 px-6 py-10">
+      <div className="mb-10 text-center">
         <h1 className="text-3xl font-semibold text-gray-800">
           Alerts Practice Page
         </h1>
 
-        <p className="text-gray-500 mt-2 mb-4">
+        <p className="mb-4 mt-2 text-gray-500">
           Practice handling different types of alerts for Selenium automation
         </p>
 
-        {/* 🔥 Back to Home Button */}
-        <Link href="/">
-          <button className="bg-gray-800 hover:bg-black text-white px-5 py-2 rounded-lg transition">
-            ← Back to Dashboard
-          </button>
-        </Link>
+        <DashboardBackLink />
       </div>
 
-      {/* Alerts Cards */}
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="mx-auto max-w-3xl space-y-6">
         <SimpleAlert />
         <ConfirmAlert />
         <PromptAlert />
       </div>
-
     </div>
   )
 }

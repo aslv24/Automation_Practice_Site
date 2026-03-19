@@ -1,16 +1,25 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function DynamicDropdown() {
-
   const [options, setOptions] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
+  const timeoutRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) {
+        window.clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   const loadOptions = () => {
     setLoading(true)
+    setOptions([])
 
-    setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       setOptions([
         "Selenium WebDriver",
         "Playwright Automation",
@@ -27,39 +36,32 @@ export default function DynamicDropdown() {
   }
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition border border-gray-100">
-
-      <h2 className="text-lg font-semibold mb-4 text-gray-800">
+    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition hover:shadow-lg">
+      <h2 className="mb-4 text-lg font-semibold text-gray-800">
         Dynamic Dropdown (Wait Scenario)
       </h2>
 
       <button
         onClick={loadOptions}
-        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-3 transition"
+        disabled={loading}
+        className="mb-3 rounded bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Load Options
+        {loading ? "Loading..." : "Load Options"}
       </button>
 
-      {loading && (
-        <p className="text-gray-500 animate-pulse">
-          Loading options...
-        </p>
-      )}
+      {loading && <p className="animate-pulse text-gray-500">Loading options...</p>}
 
       {!loading && options.length > 0 && (
-        <select className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
+        <select className="w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
           <option value="">-- Select Topic --</option>
 
-          {options.map((opt, index) => (
-            <option key={index} value={opt}>
+          {options.map((opt) => (
+            <option key={opt} value={opt}>
               {opt}
             </option>
           ))}
-
         </select>
       )}
-
     </div>
   )
 }

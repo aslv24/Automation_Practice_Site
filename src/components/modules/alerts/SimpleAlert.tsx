@@ -1,3 +1,5 @@
+"use client"
+
 import AlertCard from "./AlertCard"
 
 export default function SimpleAlert() {
